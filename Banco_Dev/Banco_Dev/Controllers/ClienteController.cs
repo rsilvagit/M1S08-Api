@@ -9,10 +9,10 @@ namespace Banco_Dev.Controllers
         [HttpPost("Clientes")]
         public ActionResult PessoaFisica([FromBody] Cliente PessoaFisica)
         {
-            return Ok("Created");
+            return Results.OK();
         }
         [HttpPost("Clientes")]
-        public ActionResult PessoaJuridica([FromBody] Cliente PessoaJuridica)
+        public ActionResult PessoaJuridica(Cliente PessoaJuridica)
         {
             return Ok("Created");
         }
