@@ -8,9 +8,9 @@ namespace Banco_Dev.Controllers
     {
         public TransacaoController()
         {
-            TransacaoModel transacaoModel = new TransacaoModel(); 
+            TransacaoModel transacaoModel = new TransacaoModel();
         }
-        [HttpPost] ("Transacao/{idCliente}")
+        [HttpPost("Transacao/{idCliente}")]
         
         public ActionResult PostTransacao(int idCliente)
         {
@@ -19,7 +19,7 @@ namespace Banco_Dev.Controllers
             
         
         }
-        [HttpGet]("Transacoes/{idCliente}")
+        [HttpGet("Transacoes/{idCliente}")]
             public ActionResult ListTransasao(int idCliente)
         {
             return Results.Ok(ClienteModel.Transacao);
