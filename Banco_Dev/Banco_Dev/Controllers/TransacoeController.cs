@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Banco_Dev;
+using Banco_Dev.Controllers;
+using Banco_Dev.Models;
 
 namespace Banco_Dev.Controllers
 {

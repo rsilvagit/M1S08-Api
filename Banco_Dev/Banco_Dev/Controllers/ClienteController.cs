@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Banco_Dev;
+using Banco_Dev.Controllers;
+using Banco_Dev.Models;
 
 namespace Banco_Dev.Controllers
 {
@@ -37,16 +39,22 @@ namespace Banco_Dev.Controllers
             return Ok("Success");
         }
         [HttpDelete("Clientes/{id}")]
-        public ActionResult ExcluirCliente(int id)
+        public ActionResult DeletarCliente([FromRoute] int id)
         {
-            if (Cliente saldo<=0)
+            Cliente clienteDeletar = _clienteService.BuscarCliente(id);
+
+            if (clienteDeletar.Saldo != 0)
             {
-                return Ok("conta excluida");
-            } else 
-                {
-                    return BadRequest("Não foi possivel excluir a conta pois o saldo não está zerado");
-                }
+                return BadRequest($"Não foi possível deletar cliente. Cliente há saldo de: {clienteDeletar.Saldo}");
+            }
+
+
+            _clienteService.DeletarCliente(id);
+            return Ok();
+
+
         }
+
 
     }
 }
