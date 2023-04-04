@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Banco_Dev;
+using Banco_Dev.Models;
+using Banco_Dev.Controllers;
+using Banco_Dev.Interface;
+using Banco_Dev.Service;
+
 
 namespace Banco_Dev
 

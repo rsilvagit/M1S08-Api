@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Banco_Dev;
+using Banco_Dev.Models;
+using Banco_Dev.Interface;
+using Banco_Dev.Service;
+using Banco_Dev.Controllers;
 
 
 namespace Banco_Dev.Models 

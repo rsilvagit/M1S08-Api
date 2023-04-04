@@ -1,88 +1,92 @@
-﻿using projetoApi.Interface;
-using projetoApi.Models;
+﻿using Banco_Dev.Interface;
+using Banco_Dev.Models;
+using Banco_Dev.Interface;
+using Banco_Dev.Service;
 
-namespace Banco_Dev.Service
+namespace Banco_Dev.Service 
+{ 
 
-public class ClienteService : IClienteService
-{
-    static List<Cliente> _clientes = new();
-
-
-    public void CriarConta(Cliente cliente)
+    public class ClienteService : IClienteService
     {
-        _clientes.Add(cliente);
-
-    }
+        static List<Cliente> _clientes = new();
 
 
-    public List<PessoaFisica> ExibirClientesPF()
-    {
-        List<PessoaFisica> clientesPF = _clientes.OfType<PessoaFisica>().ToList();
-        return clientesPF;
-
-    }
-
-    public List<PessoaJuridica> ExibirClientesPJ()
-    {
-        List<PessoaJuridica> clientesPJ = _clientes.OfType<PessoaJuridica>().ToList();
-        return clientesPJ;
-    }
-
-    public Cliente BuscarCliente(int id)
-    {
-        return _clientes.Find(x => x.NumeroConta == id);
-    }
-
-    public void DeletarCliente(int id)
-    {
-        _clientes.Remove(BuscarCliente(id));
-    }
-
-    public Cliente AtualizarPessoaFisica(PessoaFisica pessoaFisica, int id)
-    {
-        PessoaFisica newPessoaFisica = BuscarCliente(id) as PessoaFisica;
-
-        if (pessoaFisica != null)
+        public void CriarConta(Cliente cliente)
         {
-            newPessoaFisica.Email = pessoaFisica.Email;
-            newPessoaFisica.Telefone = pessoaFisica.Telefone;
-            newPessoaFisica.Endereco = pessoaFisica.Endereco;
-            newPessoaFisica.Nome = pessoaFisica.Nome;
-            newPessoaFisica.Cpf = pessoaFisica.Cpf;
-            newPessoaFisica.DataNascimento = pessoaFisica.DataNascimento;
+            _clientes.Add(cliente);
+
         }
 
-        return newPessoaFisica;
 
-    }
-
-    public Cliente AtualizarPessoaJuridica(PessoaJuridica pessoaJuridica, int id)
-    {
-        PessoaJuridica newPessoaJuridica = BuscarCliente(id) as PessoaJuridica;
-
-        if (newPessoaJuridica != null)
+        public List<PessoaFisica> ExibirClientesPF()
         {
-            newPessoaJuridica.Email = pessoaJuridica.Email;
-            newPessoaJuridica.Telefone = pessoaJuridica.Telefone;
-            newPessoaJuridica.Endereco = pessoaJuridica.Endereco;
-            newPessoaJuridica.RazaoSocial = pessoaJuridica.RazaoSocial;
-            newPessoaJuridica.NomeFantasia = pessoaJuridica.NomeFantasia;
-            newPessoaJuridica.CNPJ = pessoaJuridica.CNPJ;
-            newPessoaJuridica.DataAbertura = pessoaJuridica.DataAbertura;
+            List<PessoaFisica> clientesPF = _clientes.OfType<PessoaFisica>().ToList();
+            return clientesPF;
+
         }
 
-        return newPessoaJuridica;
-    }
-    public void AdicionarTransacao(Transacao transacao, int idCliente)
-    {
-        Cliente cliente = BuscarCliente(idCliente);
-        cliente.Extrato.Add(transacao);
-    }
+        public List<PessoaJuridica> ExibirClientesPJ()
+        {
+            List<PessoaJuridica> clientesPJ = _clientes.OfType<PessoaJuridica>().ToList();
+            return clientesPJ;
+        }
 
-    public List<Transacao> ListarTransacao(int idCliente)
-    {
-        Cliente cliente = BuscarCliente(idCliente);
-        return cliente.Extrato;
-    }
+        public Cliente BuscarCliente(int id)
+        {
+            return _clientes.Find(x => x.NumeroConta == id);
+        }
 
+        public void DeletarCliente(int id)
+        {
+            _clientes.Remove(BuscarCliente(id));
+        }
+
+        public Cliente AtualizarPessoaFisica(PessoaFisica pessoaFisica, int id)
+        {
+            PessoaFisica newPessoaFisica = BuscarCliente(id) as PessoaFisica;
+
+            if (pessoaFisica != null)
+            {
+                newPessoaFisica.Email = pessoaFisica.Email;
+                newPessoaFisica.Telefone = pessoaFisica.Telefone;
+                newPessoaFisica.Endereco = pessoaFisica.Endereco;
+                newPessoaFisica.Nome = pessoaFisica.Nome;
+                newPessoaFisica.Cpf = pessoaFisica.Cpf;
+                newPessoaFisica.DataNascimento = pessoaFisica.DataNascimento;
+            }
+
+            return newPessoaFisica;
+
+        }
+
+        public Cliente AtualizarPessoaJuridica(PessoaJuridica pessoaJuridica, int id)
+        {
+            PessoaJuridica newPessoaJuridica = BuscarCliente(id) as PessoaJuridica;
+
+            if (newPessoaJuridica != null)
+            {
+                newPessoaJuridica.Email = pessoaJuridica.Email;
+                newPessoaJuridica.Telefone = pessoaJuridica.Telefone;
+                newPessoaJuridica.Endereco = pessoaJuridica.Endereco;
+                newPessoaJuridica.RazaoSocial = pessoaJuridica.RazaoSocial;
+                newPessoaJuridica.NomeFantasia = pessoaJuridica.NomeFantasia;
+                newPessoaJuridica.CNPJ = pessoaJuridica.CNPJ;
+                newPessoaJuridica.DataAbertura = pessoaJuridica.DataAbertura;
+            }
+
+            return newPessoaJuridica;
+        }
+        public void AdicionarTransacao(Transacao transacao, int idCliente)
+        {
+            Cliente cliente = BuscarCliente(idCliente);
+            cliente.Extrato.Add(transacao);
+        }
+
+        public List<Transacao> ListarTransacao(int idCliente)
+        {
+            Cliente cliente = BuscarCliente(idCliente);
+            return cliente.Extrato;
+        }
+
+    }
 }

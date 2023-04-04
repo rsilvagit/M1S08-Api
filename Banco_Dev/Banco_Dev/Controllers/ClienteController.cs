@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Banco_Dev;
 using Banco_Dev.Controllers;
 using Banco_Dev.Models;
+using Banco_Dev.Service;
+using System.Data;
 
 namespace Banco_Dev.Controllers
 {
@@ -11,7 +13,7 @@ namespace Banco_Dev.Controllers
         [HttpPost("Clientes")]
         public ActionResult PessoaFisica([FromBody] Cliente PessoaFisica)
         {
-            return Results.OK();
+            return Ok("Ok");
         }
         [HttpPost("Clientes")]
         public ActionResult PessoaJuridica(Cliente PessoaJuridica)
@@ -41,7 +43,7 @@ namespace Banco_Dev.Controllers
         [HttpDelete("Clientes/{id}")]
         public ActionResult DeletarCliente([FromRoute] int id)
         {
-            Cliente clienteDeletar = _clienteService.BuscarCliente(id);
+            Cliente clienteDeletar = ClienteService.BuscarCliente(int id);
 
             if (clienteDeletar.Saldo != 0)
             {
@@ -49,7 +51,7 @@ namespace Banco_Dev.Controllers
             }
 
 
-            _clienteService.DeletarCliente(id);
+            ClienteService.DeletarCliente(int id);
             return Ok();
 
 

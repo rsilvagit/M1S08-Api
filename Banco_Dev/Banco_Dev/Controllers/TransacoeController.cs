@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Banco_Dev;
 using Banco_Dev.Controllers;
 using Banco_Dev.Models;
+using Banco_Dev.Interface;
+using Banco_Dev.Service;
 
 namespace Banco_Dev.Controllers
 {
@@ -10,21 +12,21 @@ namespace Banco_Dev.Controllers
     {
         public TransacaoController()
         {
-            TransacaoModel transacaoModel = new TransacaoModel();
+            Transacao transacaoModel = new Transacao();
         }
         [HttpPost("Transacao/{idCliente}")]
         
         public ActionResult PostTransacao(int idCliente)
         {
             
-                return Results.Ok(transacao);
+                return Ok();
             
         
         }
         [HttpGet("Transacoes/{idCliente}")]
             public ActionResult ListTransasao(int idCliente)
         {
-            return Results.Ok(ClienteModel.Transacao);
+            return Ok();
         }
     }
 
