@@ -17,7 +17,7 @@ namespace Banco_Dev.Interface
         Cliente BuscarCliente(int id);
         Cliente AtualizarPessoaFisica(PessoaFisica pessoaFisica, int id);
         Cliente AtualizarPessoaJuridica(PessoaJuridica pessoaJuridica, int id);
-        void DeletarCliente(int id);
+        void DeletarCliente(Cliente clienteDeletar);
         void AdicionarTransacao(Transacao transacao, int idCliente);
         List<Transacao> ListarTransacao(int idCliente);
 

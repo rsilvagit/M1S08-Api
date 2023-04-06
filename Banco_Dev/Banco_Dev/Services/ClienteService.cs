@@ -36,9 +36,9 @@ namespace Banco_Dev.Service
             return _clientes.Find(x => x.NumeroConta == id);
         }
 
-        public void DeletarCliente(int id)
+        public void DeletarCliente(Cliente clienteDeletar)
         {
-            _clientes.Remove(BuscarCliente(id));
+            _clientes.Remove(clienteDeletar);
         }
 
         public Cliente AtualizarPessoaFisica(PessoaFisica pessoaFisica, int id)

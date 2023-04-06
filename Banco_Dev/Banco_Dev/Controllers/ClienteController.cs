@@ -40,10 +40,11 @@ namespace Banco_Dev.Controllers
         {
             return Ok("Success");
         }
-        [HttpDelete("Clientes/{id}")]
+       [HttpDelete("Clientes/{id}")]
         public ActionResult DeletarCliente([FromRoute] int id)
         {
-            Cliente clienteDeletar = ClienteService.BuscarCliente(int id);
+            var clienteService = new ClienteService();
+            Cliente clienteDeletar = clienteService.BuscarCliente(id);
 
             if (clienteDeletar.Saldo != 0)
             {
@@ -51,7 +52,7 @@ namespace Banco_Dev.Controllers
             }
 
 
-            ClienteService.DeletarCliente(int id);
+            clienteService.DeletarCliente(clienteDeletar);
             return Ok();
 
 
